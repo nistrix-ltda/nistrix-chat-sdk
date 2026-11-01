@@ -1,8 +1,9 @@
 {
   "name": "@nistrix/chat",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Nistrix chat for customers' sites and apps: visitors talk to the organization's agents and team with a publishable key (nx_pk_). Runs in browsers and React Native.",
   "license": "MIT",
+  "author": "Nistrix <dev@nistrix.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/nistrix-ltda/nistrix-chat-sdk.git"
