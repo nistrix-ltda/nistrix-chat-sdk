@@ -4,6 +4,14 @@ The Nistrix chat for your own site or app: your visitors talk to your Nistrix ag
 
 It uses a **publishable key** (`nx_pk_live_...`, or `nx_pk_test_...` in your test environment). It is not a secret: it can only open visitor chats on one chat channel, from the sites and apps you listed on it. Never put a secret key (`nx_sk_`, `nx_rk_`) in a site or app.
 
+## Install
+
+```bash
+npm install @nistrix/chat
+```
+
+The SDK and publishable keys are on every Nistrix plan, with no add-on.
+
 ## Get a key
 
 In Nistrix, **Integrations → API and MCP → Nistrix in your apps → Publishable keys**: choose the chat channel, list your sites (`https://shop.example`) and apps (`com.shop.app`), and copy the key.
