@@ -8,3 +8,17 @@ export {
   type VisitorStorage,
   type WebSocketFactory,
 } from "./chat.js";
+export {
+  NistrixIntents,
+  type BookingOptions,
+  type BookingRequest,
+  type DataKind,
+  type DataToken,
+  type FieldValue,
+  type Intent,
+  type IntentStatus,
+  type IntentType,
+  type LeadRequest,
+  type NistrixIntentsOptions,
+  type Slot,
+} from "./intents.js";

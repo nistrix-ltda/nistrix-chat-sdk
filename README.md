@@ -43,9 +43,25 @@ const chat = new NistrixChat({
 
 Calls throw `ChatError` with the HTTP `status` and the API's `code`, for example `origin-not-allowed` (add the site or app to the key) or `rate-limited`.
 
+## Booking pages and lead forms
+
+`NistrixIntents` uses the same key to show free times, ask for appointments, send leads, and turn sensitive values into data tokens. A booking or a lead is an intent (`nx_int_`, ten minutes) that your backend confirms with a secret key, unless the key confirms it on its own.
+
+```ts
+import { NistrixIntents } from "@nistrix-ltda/chat";
+
+const nistrix = new NistrixIntents({ publishableKey: "nx_pk_live_..." });
+
+const [slot] = await nistrix.slots({ service: "Cleaning", from: "2026-12-08" });
+const booking = await nistrix.book({ start: slot.localStart, name: "Bia", phone: "92991234567" });
+
+const cpf = await nistrix.tokenize("cpf", "529.982.247-25"); // nx_tok_..., never the value
+const lead = await nistrix.submitLead({ phone: "92991234567", fields: { cpf: cpf.token } });
+```
+
 ## Test environment
 
-A `nx_pk_test_` key from your sandbox works the same way; conversations land in the sandbox, and `chat.test` is `true`.
+A `nx_pk_test_` key from your sandbox works the same way; conversations, bookings, and leads land in the sandbox, and `test` is `true`.
 
 ## Develop
 
