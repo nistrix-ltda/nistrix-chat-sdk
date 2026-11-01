@@ -1,0 +1,34 @@
+{
+  "name": "@nistrix-ltda/chat",
+  "version": "0.1.0",
+  "description": "Nistrix chat for customers' sites and apps: visitors talk to the organization's agents and team with a publishable key (nx_pk_). Runs in browsers and React Native.",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nistrix-ltda/nistrix-chat-sdk.git"
+  },
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "vitest": "^3.2.4"
+  }
+}
