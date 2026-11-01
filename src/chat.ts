@@ -5,7 +5,7 @@
  * name). The key is not a secret and can do nothing else.
  */
 
-export const DEFAULT_API_URL = "https://api.nistrix.com.br";
+export const DEFAULT_API_URL = "https://api.nistrix.com";
 const APP_HEADER = "X-Nistrix-App";
 const FIRST_RETRY_MS = 1000;
 const MAX_RETRY_MS = 30_000;
