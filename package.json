@@ -1,8 +1,8 @@
 {
-  "name": "@nistrix-ltda/chat",
+  "name": "@nistrix/chat",
   "version": "0.1.0",
   "description": "Nistrix chat for customers' sites and apps: visitors talk to the organization's agents and team with a publishable key (nx_pk_). Runs in browsers and React Native.",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/nistrix-ltda/nistrix-chat-sdk.git"
@@ -22,10 +22,12 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "prepublishOnly": "pnpm test && pnpm build"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   },
   "devDependencies": {
     "typescript": "~5.9.3",

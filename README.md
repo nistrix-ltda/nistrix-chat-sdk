@@ -1,4 +1,4 @@
-# @nistrix-ltda/chat
+# @nistrix/chat
 
 The Nistrix chat for your own site or app: your visitors talk to your Nistrix agents and team, in a screen you design. It runs in browsers and in React Native, with no other dependency.
 
@@ -11,7 +11,7 @@ In Nistrix, **Integrations → API and MCP → Nistrix in your apps → Publisha
 ## Use it
 
 ```ts
-import { NistrixChat } from "@nistrix-ltda/chat";
+import { NistrixChat } from "@nistrix/chat";
 
 const chat = new NistrixChat({
   publishableKey: "nx_pk_live_...",
@@ -48,7 +48,7 @@ Calls throw `ChatError` with the HTTP `status` and the API's `code`, for example
 `NistrixIntents` uses the same key to show free times, ask for appointments, send leads, and turn sensitive values into data tokens. A booking or a lead is an intent (`nx_int_`, ten minutes) that your backend confirms with a secret key, unless the key confirms it on its own.
 
 ```ts
-import { NistrixIntents } from "@nistrix-ltda/chat";
+import { NistrixIntents } from "@nistrix/chat";
 
 const nistrix = new NistrixIntents({ publishableKey: "nx_pk_live_..." });
 
