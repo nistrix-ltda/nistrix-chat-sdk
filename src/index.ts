@@ -21,4 +21,5 @@ export {
   type LeadRequest,
   type NistrixIntentsOptions,
   type Slot,
+  type TicketRequest,
 } from "./intents.js";

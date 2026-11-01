@@ -96,3 +96,18 @@ describe("given a lead form", () => {
     expect(() => new NistrixIntents({ publishableKey: "nx_sk_live_x" })).toThrow(/publishable/);
   });
 });
+
+describe("given a support form", () => {
+  it("then a ticket is sent as an open_ticket intent", async () => {
+    const api = fakeApi(() => json({ id: "nx_int_3", type: "open_ticket", status: "pending" }, 201));
+    const nistrix = new NistrixIntents({ publishableKey: KEY, apiUrl: API, fetch: api.fetch });
+
+    await nistrix.openTicket({ subject: "Pedido atrasado", phone: "92991234567" });
+
+    expect(JSON.parse(String(api.calls[0]?.init.body))).toEqual({
+      type: "open_ticket",
+      subject: "Pedido atrasado",
+      phone: "92991234567",
+    });
+  });
+});

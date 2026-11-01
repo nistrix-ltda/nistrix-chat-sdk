@@ -1,6 +1,6 @@
 /**
  * Booking pages and lead forms in customers' sites and apps, with the same publishable key as
- * the chat. Free times are public; a booking or a lead is an intent (nx_int_, ten minutes) that
+ * the chat. Free times are public; a booking, a lead, or a ticket is an intent (nx_int_, ten minutes) that
  * the organization's backend confirms with a secret key, unless the key confirms it on its own.
  * Sensitive values (a CPF, a health note) become data tokens (nx_tok_) sent in their place.
  */
@@ -32,7 +32,7 @@ export interface Slot {
   timezone: string;
 }
 
-export type IntentType = "book_appointment" | "submit_lead";
+export type IntentType = "book_appointment" | "submit_lead" | "open_ticket";
 export type IntentStatus = "pending" | "confirmed" | "failed" | "expired";
 
 export interface Intent {
@@ -43,7 +43,7 @@ export interface Intent {
   /** True for a sandbox key: nothing here reaches real customers. */
   test: boolean;
   expiresAt: string;
-  /** For a booking: scheduleName, serviceName, localStart, timezone. */
+  /** For a booking: scheduleName, serviceName, localStart, timezone; for a ticket: number. */
   result: Record<string, unknown> | null;
   error: string | null;
 }
@@ -68,6 +68,15 @@ export interface LeadRequest {
   message?: string;
   /** Customer fields by key; a sensitive value goes as its data token. */
   fields?: Record<string, FieldValue>;
+}
+
+export interface TicketRequest {
+  subject: string;
+  description?: string;
+  category?: string;
+  name?: string;
+  phone: string;
+  email?: string;
 }
 
 export type DataKind = "cpf" | "cnpj" | "text";
@@ -158,6 +167,11 @@ export class NistrixIntents {
   /** Sends a lead from a form. */
   async submitLead(lead: LeadRequest): Promise<Intent> {
     return this.#request("/intents", { type: "submit_lead", ...lead });
+  }
+
+  /** Opens a support ticket (the customer is found or created by phone). */
+  async openTicket(ticket: TicketRequest): Promise<Intent> {
+    return this.#request("/intents", { type: "open_ticket", ...ticket });
   }
 
   /** Where an intent stands: pending, confirmed, failed (with the reason), or expired. */
